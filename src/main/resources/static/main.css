@@ -1,67 +1,135 @@
-nav {
-    background-color: #333;
-    padding: 10px;
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #fff;
+    color: #333;
+    text-align: center;
 }
 
+
+nav {
+    background-color: #c8102e;
+    padding: 15px 20px;
+}
+nav .container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
 nav a {
     color: white;
     text-decoration: none;
-    margin-right: 20px;
-    padding: 10px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background 0.3s;
 }
-
 nav a:hover {
-    background-color: #575757;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
+    background: #a10d23;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
+.dropdown-content li a {
     display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
 }
 
-.dropdown-content a:hover {
-    background-color: #ddd;
+.dropdown-content li a:hover {
+    background-color: #e30613;
+    color: white;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
+
+.hero {
+    padding: 1px 20px;
+    background: linear-gradient(135deg, #c8102e 0%, #e41e34 100%);
+    color: white;
+}
+.hero h1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.hero p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+main.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+.attraction-section {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
 }
-
-
-main {
-    flex-grow: 1;
+.attraction-card {
+    background: #fff;
+    border: 2px solid #c8102e;
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.attraction-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.attraction-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.attraction-card h2 {
+    background: #f1f1f1;
+    margin: 0;
+    padding: 15px;
+    font-size: 1.5rem;
+    color: #c8102e;
+}
+.attraction-card p {
+    padding: 15px;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 footer {
-    background-color: #333;
+    background: #c8102e;
     color: white;
-    text-align: center;
-    padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    padding: 20px 0;
+    margin-top: 40px;
 }
 
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .attraction-card {
+        width: 90%;
+    }
+    nav .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

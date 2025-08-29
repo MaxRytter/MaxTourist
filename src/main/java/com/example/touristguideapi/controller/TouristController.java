@@ -19,7 +19,7 @@ private final TouristService touristService;
         this.touristService = touristService;
     }
     //En GetMapping til forside http://localhost:8080/
-@GetMapping("/")
+@GetMapping ("/")
     public String showFrontPage(Model model) {
         List<TouristAttraction> attractionslist = touristService.getAllAttractions();
         System.out.println("Attractions: " + attractionslist);
@@ -42,19 +42,24 @@ public ResponseEntity<TouristAttraction> getAttractionName(@PathVariable String 
         return new ResponseEntity<>(attraction, HttpStatus.OK);
     }
 
-    //http://localhost:8080/attractions/add   substituer /add med f.eks. /havfrue
     //laver en PostMapping der tilføjer en attraktion til vores attraktionsliste
-    @PostMapping("/add")
+    @PostMapping("/attractions/add")
     public ResponseEntity<TouristAttraction> addAttraction(@RequestBody TouristAttraction attraction) {
         TouristAttraction newAttraction = touristService.addAttraction(attraction);
-        return new ResponseEntity<>(newAttraction, HttpStatus.CREATED);
+        if (newAttraction != null) {
+            return new ResponseEntity<>(newAttraction, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
+
     //http://localhost:8080/attractions/update/Tivoli
-    //en PostMapping der opdaterer beskrivelsen på den skrevne attraktion i json
+    //en PostMapping der kan opdatere navn og beskrivelse på den skrevne attraktion i json
+    //det vil sige at hvis du ændrer navnet, så ændrer du også på endpointet - f.eks. fra http://localhost:8080/attractions/Tivoli til http://localhost:8080/attractions/Havfrue
     @PostMapping("/attractions/update/{name}")
-    public ResponseEntity<TouristAttraction> updateDescription(@PathVariable String name, @RequestBody TouristAttraction attraction) {
-        TouristAttraction updateAttraction = touristService.updateDescription(name, attraction.getDescription());
+    public ResponseEntity<TouristAttraction> updateAttraction(@PathVariable String name, @RequestBody TouristAttraction attraction) {
+        TouristAttraction updateAttraction = touristService.updateAttraction(name,attraction.getName(), attraction.getDescription());
         return new ResponseEntity<>(updateAttraction, HttpStatus.OK);
     }
 

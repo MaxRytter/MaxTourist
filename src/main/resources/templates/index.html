@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tourist Guide</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{main.css}">
 </head>
@@ -14,17 +13,18 @@
         <a href="/">Home</a>
         <div class="dropdown">
             <a href="#">Attractions</a>
-            <div class="dropdown-content">
-                <div th:each="attraction : ${attractionslist}">
-                    <a th:href="@{/attractions/{name}(name=${attraction.name})}" th:text="${attraction.name}"></a>
-                </div>
-            </div>
+            <ul class="dropdown-content">
+                <li th:each="attraction : ${attractionslist}">
+                    <a th:href="@{/attractions/{name}(name=${attraction.name})}"
+                       th:text="${attraction.name}"></a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
 
 <section class="hero">
-    <h1>Velkommen til vores turistguide!</h1>
+    <h1>Velkommen til den bedste danmark-touristguide!</h1>
     <p>
         Her kan du finde en masse attraktioner i København, som passer til folk i alle aldre!<br>
         Oplev alt fra naturoplevelser til kultur og spændende byliv.
@@ -35,27 +35,31 @@
     <!-- Sektion med animerede turistkort -->
     <section class="attraction-section">
         <div class="attraction-card" id="tivoli">
-            <img th:src="@{/tivoli.png}" alt="Tivoli">
             <h2>Tivoli</h2>
-            <p>Forlystelsespark midt i København.</p>
+            <img th:src="@{/tivoli.jpg}" alt="Tivoli">
+            <p>Danmarks fedeste forlystelsespark tæt ved hovedbanegården, hvor der både er forlystelser, koncerter, samt andre kulturrige oplevelser.</p>
         </div>
         <div class="attraction-card" id="zoo">
-            <img th:src="@{/zoo.jpg}" alt="Zoologisk Have">
             <h2>Zooligisk have</h2>
-
-            <p>Se fantastiske dyr fra hele verden.</p>
+            <img th:src="@{/zoo.jpg}" alt="Zoologisk Have">
+            <p>Er du træt af kun at se på hunde og katte? så kan du tage i danmarks største Zoologisk have og se på dyr fra hele verdenen! alt fra livsfarlige bjørne, til nuttede pingviner.</p>
         </div>
         <div class="attraction-card" id="norrebro">
             <h2>Nørrebroparken</h2>
             <img th:src="@{/norrebro.jpg}" alt="Nørrebroparken">
-            <p>Oplev det pulserende byliv og grønne områder.</p>
+            <p>Et dejligt grønt område midt på Nørrebro, hvor der er fodboldbane, volleybane og andre aktiviter. Perfekt til en god sommerdag hvis man medbringer et tæppe man kan sidde på.</p>
+        </div>
+        <div class="attraction-card" id="fredagsbar">
+            <h2>EK-Fredagsbar</h2>
+            <img th:src="@{/fredagsbar.jpg}" alt="fredagsbar">
+            <p>Her kan man få billige øl, spille beerpong og møde en masse studerende fra Erhversakademi København og med stor sandsynlighed andre som har sneget sig ind for de billige øl!</p>
         </div>
     </section>
 </main>
 
 <footer>
     <div class="container">
-        Kontakt os: Max Rytter: gå ind i den nærmeste kebabbutik! Najib Nawabi: nærmeste børnehave! Mads Hvid: Verdensmesterskaberne i skak (som tilskuer) Marcus Heilstrup: kontakt WoW Hardcore Guildleader i OnlyFans
+        Kontakt: Max Rytter - mary0004@stud.ek.dk
     </div>
 </footer>
 </body>

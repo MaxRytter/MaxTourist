@@ -29,8 +29,8 @@ private final TouristRepository touristRepository;
         return touristRepository.addAttraction(attraction);
     }
 
-    public TouristAttraction updateDescription(String name, String description) {
-        TouristAttraction attraction = touristRepository.updateDescription(name, description);
+    public TouristAttraction updateAttraction(String name, String newName, String description) {
+        TouristAttraction attraction = touristRepository.updateAttraction(name, newName, description);
         return attraction;
     }
 
